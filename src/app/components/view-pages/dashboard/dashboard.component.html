@@ -1,0 +1,128 @@
+<app-header-sidebar></app-header-sidebar>
+
+<main class="main-content" [class.expanded]="isSidebarCollapsed">
+  <div class="dashboard-header">
+    <h1 class="dashboard-title">Dashboard Overview</h1>
+    <div class="date-selector">
+      <span>Today: </span>
+      <span id="current-date">{{ currentDate }}</span>
+    </div>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="stats-cards">
+    <div class="stat-card users">
+      <div class="stat-title">
+        <i class="fas fa-users" style="margin-right: 8px;"></i>
+        Total Users
+      </div>
+      <div class="stat-value">{{ dashboardService.stats().totalUsers }}</div>
+    </div>
+
+    <div class="stat-card wallet">
+      <div class="stat-title">
+        <i class="fas fa-wallet" style="margin-right: 8px;"></i>
+        Total Wallet Amount
+      </div>
+      <div class="stat-value">₹{{ dashboardService.stats().totalWalletAmount }}</div>
+    </div>
+
+    <div class="stat-card winners">
+      <div class="stat-title">
+        <i class="fas fa-trophy" style="margin-right: 8px;"></i>
+        Total Winners
+      </div>
+      <div class="stat-value">{{ dashboardService.stats().totalWinners }}</div>
+    </div>
+
+    <div class="stat-card losers">
+      <div class="stat-title">
+        <i class="fas fa-sad-tear" style="margin-right: 8px;"></i>
+        Total Losers
+      </div>
+      <div class="stat-value">{{ dashboardService.stats().totalLosers }}</div>
+    </div>
+
+    <div class="stat-card spins">
+      <div class="stat-title">
+        <i class="fas fa-sync-alt" style="margin-right: 8px;"></i>
+        Total Spins
+      </div>
+      <div class="stat-value">{{ dashboardService.stats().totalSpins }}</div>
+    </div>
+  </div>
+
+  <!-- Recent Winners -->
+  <div class="dashboard-sections">
+    <div class="dashboard-section">
+      <div class="section-header">
+        <h2 class="section-title">Recent Winners</h2>
+        <span class="view-all">View All</span>
+      </div>
+      <ul class="winner-list">
+        <li *ngFor="let winner of dashboardService.recentWinners()" class="winner-item">
+          <img
+            src="https://randomuser.me/api/portraits/lego/1.jpg"
+            alt="User Avatar"
+            class="user-avatar-sm"
+          />
+          <div class="user-info">
+            <div class="user-name">{{ winner.name || 'Unknown' }}</div>
+            <div class="user-detail">{{ winner.email || 'Email not available' }}</div>
+          </div>
+          <div class="prize-amount win">{{ winner.prizeName || 'Cash Prize' }}</div>
+        </li>
+        <li *ngIf="dashboardService.recentWinners().length === 0">No winners yet.</li>
+      </ul>
+    </div>
+
+    <!-- Recent Losers -->
+    <div class="dashboard-section">
+      <div class="section-header">
+        <h2 class="section-title">Recent Losers</h2>
+        <span class="view-all">View All</span>
+      </div>
+      <ul class="loser-list">
+        <li *ngFor="let loser of dashboardService.recentLosers()" class="loser-item">
+          <img
+            src="https://randomuser.me/api/portraits/lego/2.jpg"
+            alt="User Avatar"
+            class="user-avatar-sm"
+          />
+          <div class="user-info">
+            <div class="user-name">{{ loser.name || 'Unknown' }}</div>
+            <div class="user-detail">{{ loser.email || 'Email not available' }}</div>
+          </div>
+          <div class="prize-amount loss">{{ loser.createdAt | date: 'medium' }}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Wallet Updates -->
+  <div class="dashboard-section">
+    <div class="section-header">
+      <h2 class="section-title">Wallet Updates</h2>
+      <span class="view-all">View All</span>
+    </div>
+    <ul class="wallet-updates">
+      <li *ngFor="let wallet of dashboardService.walletUpdates()" class="wallet-item">
+        <div class="wallet-info">
+          <div class="wallet-icon">
+            <i class="fas fa-wallet"></i>
+          </div>
+          <div class="wallet-details">
+            <div class="wallet-title">{{ wallet.name }}</div>
+            <div class="wallet-time">{{ wallet.updatedAt | date: 'short' }}</div>
+          </div>
+        </div>
+        <div
+          class="wallet-amount"
+          [ngClass]="wallet.walletAmount >= 0 ? 'win' : 'loss'"
+        >
+          {{ wallet.walletAmount >= 0 ? '+' : '-' }}₹{{ wallet.walletAmount | number: '1.2-2' }}
+        </div>
+      </li>
+    </ul>
+  </div>
+</main>

@@ -1,0 +1,190 @@
+/* ---------- Global Layout Styles ---------- */
+.header {
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 70px;
+}
+
+/* Fixed Sidebar */
+.sidebar {
+  background-color: #2c3e50;
+  color: white;
+  width: 250px;
+  height: calc(100vh - 70px); /* full height minus header */
+  position: fixed;
+  top: 70px; /* below the fixed header */
+  left: 0;
+  padding-top: 20px;
+  z-index: 999;
+  transition: all 0.3s;
+}
+
+/* Main Content Area */
+.main-content {
+  margin-left: 250px; /* same as sidebar width */
+  margin-top: 70px;   /* same as header height */
+  padding: 30px;
+  min-height: calc(100vh - 70px);
+  background-color: #f5f7fa;
+  transition: all 0.3s;
+}
+
+/* ---------- Page Header ---------- */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.page-title {
+  font-size: 24px;
+  color: #2c3e50;
+}
+
+/* ---------- Action Buttons ---------- */
+.action-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-primary {
+  background-color: #6e8efb;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #5a7df4;
+}
+
+.btn-success {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #27ae60;
+}
+
+/* ---------- Table Container ---------- */
+.user-table-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  overflow-x: auto;
+}
+
+/* ---------- DataTable Styles ---------- */
+table.display {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  font-size: 0.95rem;
+  margin-top: 15px;
+}
+
+table.display thead th {
+  background-color: #f8f9fa;
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: bold;
+  color: #495057;
+  border-bottom: 2px solid #e9ecef;
+}
+
+table.display tbody td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #e9ecef;
+  color: #495057;
+  vertical-align: middle;
+}
+
+table.display tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* ---------- Avatar + Name Layout ---------- */
+.user-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar-sm {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ---------- Badge Styles ---------- */
+.badge {
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.badge-success {
+  background-color: #28a745;
+}
+
+.badge-info {
+  background-color: #17a2b8;
+}
+
+.badge-danger {
+  background-color: #dc3545;
+}
+
+/* ---------- Action Icons ---------- */
+.action-icon {
+  margin: 0 5px;
+  padding: 5px;
+  border-radius: 4px;
+  color: #555;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.action-icon:hover {
+  background-color: #f1f3f5;
+  color: #000;
+}
+
+/* ---------- Utility ---------- */
+.text-success {
+  color: #2ecc71;
+}
+
+.text-danger {
+  color: #e74c3c;
+}
+
+.text-muted {
+  color: #6c757d;
+}

@@ -1,0 +1,45 @@
+.main-content {
+  margin-left: 250px;
+  transition: margin-left 0.3s;
+  padding: 20px;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.main-content.expanded {
+  margin-left: 60px;
+}
+
+/* Custom table styling */
+.table {
+  th {
+    background-color: #343a40;
+    color: white;
+  }
+  
+  .badge {
+    font-size: 0.85em;
+  }
+}
+
+/* Modal backdrop fix */
+.modal-backdrop {
+  z-index: 1040;
+}
+
+/* Sidebar transition */
+.sidebar-transition {
+  transition: all 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 15px;
+  }
+  
+  .main-content.expanded {
+    margin-left: 0;
+  }
+}

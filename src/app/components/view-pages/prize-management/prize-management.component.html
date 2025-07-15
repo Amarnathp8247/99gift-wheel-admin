@@ -1,0 +1,103 @@
+<app-header-sidebar (sidebarToggled)="toggleSidebar()"></app-header-sidebar>
+
+<main class="main-content" [class.expanded]="isSidebarCollapsed">
+  <div class="prize-management-container">
+    <div class="prize-form-card">
+      <h2 class="section-title">Prize Management</h2>
+
+      <form (ngSubmit)="savePrize()" #prizeForm="ngForm" class="prize-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" type="text" [(ngModel)]="form.name" name="name" required 
+                   class="form-input" placeholder="Enter prize name">
+          </div>
+
+          <div class="form-group">
+            <label for="cardClass">Card Class</label>
+            <input id="cardClass" type="text" [(ngModel)]="form.cardClass" name="cardClass" required
+                   class="form-input" placeholder="e.g., gold, premium">
+          </div>
+
+          <div class="form-group">
+            <label for="brand">Brand</label>
+            <input id="brand" type="text" [(ngModel)]="form.brand" name="brand" required
+                   class="form-input" placeholder="Brand or sponsor">
+          </div>
+
+          <div class="form-group">
+            <label for="value">Value</label>
+            <div class="input-with-symbol">
+              <span class="symbol">$</span>
+              <input id="value" type="number" [(ngModel)]="form.value" name="value" required
+                     class="form-input" placeholder="0.00" min="0" step="0.01">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="codePrefix">Code Prefix</label>
+            <input id="codePrefix" type="text" [(ngModel)]="form.codePrefix" name="codePrefix" required
+                   class="form-input" placeholder="e.g., GOLD-">
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">
+            {{ selectedPrizeId ? 'Update' : 'Create' }} Prize
+          </button>
+          <button type="button" class="btn btn-outline" (click)="resetForm()">Clear</button>
+        </div>
+
+        <div class="status-messages">
+          <div *ngIf="successMessage" class="alert success">
+            <i class="icon-check"></i> {{ successMessage }}
+          </div>
+          <div *ngIf="errorMessage" class="alert error">
+            <i class="icon-warning"></i> {{ errorMessage }}
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="prize-list-card">
+      <div class="table-header">
+        <h3 class="section-subtitle">Prize List</h3>
+        <div class="table-controls">
+          <input type="text" placeholder="Search prizes..." class="search-input">
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="prize-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Brand</th>
+              <th>Class</th>
+              <th>Value</th>
+              <th>Code Prefix</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let prize of prizes">
+              <td data-label="Name">{{ prize.name }}</td>
+              <td data-label="Brand">{{ prize.brand }}</td>
+              <td data-label="Class">{{ prize.cardClass }}</td>
+              <td data-label="Value">${{ prize.value | number:'1.2-2' }}</td>
+              <td data-label="Prefix">{{ prize.codePrefix }}</td>
+              <td data-label="Actions" class="actions-cell">
+                <button (click)="editPrize(prize)" class="btn-icon edit-btn" title="Edit">
+                  <i class="icon-edit"></i>
+                </button>
+                <button (click)="deletePrize(prize._id)" class="btn-icon delete-btn" title="Delete">
+                  <i class="icon-delete"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>

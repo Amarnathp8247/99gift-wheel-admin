@@ -1,0 +1,253 @@
+.wallet-page {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+}
+
+
+.wallet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.wallet-actions .btn {
+  margin-left: 10px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.balance-card {
+  background: linear-gradient(135deg, #4361ee, #3a0ca3);
+  color: white;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.balance-overview {
+  margin-bottom: 20px;
+}
+
+.balance-label {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.balance-amount {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 5px 0;
+}
+
+.balance-change {
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.balance-details {
+  display: flex;
+  gap: 20px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-item span:first-child {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.detail-item span:last-child {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.assets-section {
+  margin-bottom: 30px;
+}
+
+.assets-section h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.assets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.asset-card {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.asset-info {
+  display: flex;
+  align-items: center;
+}
+
+.asset-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  color: #4361ee;
+  font-size: 18px;
+}
+
+.asset-name {
+  display: flex;
+  flex-direction: column;
+}
+
+.asset-name .symbol {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.asset-name .name {
+  font-size: 13px;
+  color: #666;
+}
+
+.asset-balance {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.asset-balance .amount {
+  font-weight: 600;
+}
+
+.asset-balance .value {
+  font-size: 13px;
+  color: #666;
+}
+
+.transactions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.transactions-header h2 {
+  font-size: 22px;
+}
+
+.view-all {
+  color: #4361ee;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.transactions-list {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.transaction-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.transaction-item:last-child {
+  border-bottom: none;
+}
+
+.transaction-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.transaction-item.received .transaction-icon {
+  background-color: rgba(52, 211, 153, 0.1);
+  color: #10b981;
+}
+
+.transaction-item.sent .transaction-icon {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.transaction-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.transaction-details .type {
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
+.transaction-details .date {
+  font-size: 13px;
+  color: #666;
+}
+
+.transaction-amount {
+  text-align: right;
+  font-weight: 600;
+}
+
+.transaction-amount .value {
+  display: block;
+  font-size: 13px;
+  font-weight: normal;
+  color: #666;
+  margin-top: 3px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .wallet-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .wallet-actions {
+    margin-top: 15px;
+  }
+  
+  .balance-details {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .assets-grid {
+    grid-template-columns: 1fr;
+  }
+}

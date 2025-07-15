@@ -1,0 +1,121 @@
+<app-header-sidebar (sidebarToggled)="toggleSidebar()"></app-header-sidebar>
+
+<main class="main-content" [class.expanded]="isSidebarCollapsed">
+  <div class="container mt-4">
+    <h2 class="mb-4">Spin Configuration Management</h2>
+
+    <!-- Alert Messages -->
+    <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show">
+      <i class="bi bi-check-circle me-2"></i> {{ successMessage }}
+      <button type="button" class="btn-close" (click)="successMessage = ''"></button>
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show">
+      <i class="bi bi-exclamation-triangle me-2"></i> {{ errorMessage }}
+      <button type="button" class="btn-close" (click)="errorMessage = ''"></button>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="d-flex justify-content-end mb-3">
+      <button class="btn btn-primary" (click)="openModal()">
+        <i class="bi bi-plus-circle me-2"></i>Add Spin Configuration
+      </button>
+    </div>
+
+    <!-- Configurations Table -->
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>Win Probability</th>
+            <th>Max Daily Spins</th>
+            <th>Max Daily Winners</th>
+            <th>Prizes</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let config of spinConfigs">
+            <td>{{ config.winProbability }}</td>
+            <td>{{ config.maxDailySpins }}</td>
+            <td>{{ config.maxDailyWinners }}</td>
+            <td>
+              <ul class="list-unstyled mb-0">
+                <li *ngFor="let prize of config.prizes">
+                  <span class="badge bg-secondary me-1">{{ prize.name }}</span>
+                </li>
+              </ul>
+            </td>
+            <td>
+              <button class="btn btn-sm btn-outline-primary" (click)="editConfig(config)">
+                <i class="bi bi-pencil-square"></i> Edit
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Bootstrap Modal -->
+  <div class="modal fade" [class.show]="showModal" [style.display]="showModal ? 'block' : 'none'" id="configModal" tabindex="-1" aria-labelledby="configModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="configModalLabel">
+            {{ isEditing ? 'Edit' : 'Create' }} Spin Configuration
+          </h5>
+          <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="submitConfig()">
+            <!-- Win Probability -->
+            <div class="mb-3">
+              <label for="winProbability" class="form-label">Win Probability</label>
+              <input type="number" class="form-control" id="winProbability"
+                [(ngModel)]="configForm.winProbability" name="winProbability"
+                min="0" max="1" step="0.01" required>
+              <div class="form-text">0 - 1 (e.g. 0.4 = 40% chance to win)</div>
+            </div>
+
+            <!-- Daily Limits -->
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="maxDailySpins" class="form-label">Max Daily Spins</label>
+                <input type="number" class="form-control" id="maxDailySpins"
+                  [(ngModel)]="configForm.maxDailySpins" name="maxDailySpins"
+                  min="1" required>
+              </div>
+              <div class="col-md-6">
+                <label for="maxDailyWinners" class="form-label">Max Daily Winners</label>
+                <input type="number" class="form-control" id="maxDailyWinners"
+                  [(ngModel)]="configForm.maxDailyWinners" name="maxDailyWinners"
+                  min="1" required>
+              </div>
+            </div>
+
+            <!-- Prize Selection -->
+            <div class="mb-3">
+              <label for="prizes" class="form-label">Select Prizes</label>
+              <select multiple class="form-select" id="prizes" size="5"
+                [(ngModel)]="configForm.selectedPrizes" name="selectedPrizes" required>
+                <option *ngFor="let prize of allPrizes" [ngValue]="prize._id">
+                  {{ prize.name }}
+                </option>
+              </select>
+              <div class="form-text">Hold Ctrl/Cmd to select multiple prizes</div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+              <button type="submit" class="btn btn-primary">
+                {{ isEditing ? 'Update' : 'Create' }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-backdrop fade" [class.show]="showModal" [style.display]="showModal ? 'block' : 'none'"></div>
+</main>

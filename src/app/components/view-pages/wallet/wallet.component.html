@@ -1,0 +1,125 @@
+<app-header-sidebar (sidebarToggled)="toggleSidebar()"></app-header-sidebar>
+
+
+
+<main class="main-content" [class.expanded]="isSidebarCollapsed">
+
+<div class="wallet-page">
+  <!-- Wallet Header -->
+  <div class="wallet-header">
+    <h1>My Wallet</h1>
+    <div class="wallet-actions">
+      <button class="btn btn-primary">
+        <i class="fas fa-plus"></i> Add Funds
+      </button>
+      <button class="btn btn-outline">
+        <i class="fas fa-exchange-alt"></i> Transfer
+      </button>
+    </div>
+  </div>
+
+  <!-- Balance Card -->
+  <div class="balance-card">
+    <div class="balance-overview">
+      <span class="balance-label">Total Balance</span>
+      <div class="balance-amount">$2,450.80</div>
+      <div class="balance-change positive">
+        <i class="fas fa-arrow-up"></i> 2.4% this week
+      </div>
+    </div>
+    <div class="balance-details">
+      <div class="detail-item">
+        <span>Available</span>
+        <span>$2,150.00</span>
+      </div>
+      <div class="detail-item">
+        <span>In Orders</span>
+        <span>$300.80</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Assets Grid -->
+  <div class="assets-section">
+    <h2>My Assets</h2>
+    <div class="assets-grid">
+      <!-- Asset Card 1 -->
+      <div class="asset-card">
+        <div class="asset-info">
+          <div class="asset-icon">
+            <i class="fab fa-bitcoin"></i>
+          </div>
+          <div class="asset-name">
+            <span class="symbol">BTC</span>
+            <span class="name">Bitcoin</span>
+          </div>
+        </div>
+        <div class="asset-balance">
+          <span class="amount">0.0425 BTC</span>
+          <span class="value">$1,250.50</span>
+        </div>
+      </div>
+
+      <!-- Asset Card 2 -->
+      <div class="asset-card">
+        <div class="asset-info">
+          <div class="asset-icon">
+            <i class="fab fa-ethereum"></i>
+          </div>
+          <div class="asset-name">
+            <span class="symbol">ETH</span>
+            <span class="name">Ethereum</span>
+          </div>
+        </div>
+        <div class="asset-balance">
+          <span class="amount">1.25 ETH</span>
+          <span class="value">$850.30</span>
+        </div>
+      </div>
+
+      <!-- Add more asset cards as needed -->
+    </div>
+  </div>
+
+  <!-- Transaction History -->
+  <div class="transactions-section">
+    <div class="transactions-header">
+      <h2>Recent Transactions</h2>
+      <a href="#" class="view-all">View All</a>
+    </div>
+    
+    <div class="transactions-list">
+      <!-- Transaction 1 -->
+      <div class="transaction-item received">
+        <div class="transaction-icon">
+          <i class="fas fa-arrow-down"></i>
+        </div>
+        <div class="transaction-details">
+          <span class="type">Received BTC</span>
+          <span class="date">Today, 10:45 AM</span>
+        </div>
+        <div class="transaction-amount">
+          +0.005 BTC
+          <span class="value">$150.00</span>
+        </div>
+      </div>
+
+      <!-- Transaction 2 -->
+      <div class="transaction-item sent">
+        <div class="transaction-icon">
+          <i class="fas fa-arrow-up"></i>
+        </div>
+        <div class="transaction-details">
+          <span class="type">Sent ETH</span>
+          <span class="date">Yesterday, 3:22 PM</span>
+        </div>
+        <div class="transaction-amount">
+          -0.5 ETH
+          <span class="value">$340.00</span>
+        </div>
+      </div>
+
+      <!-- Add more transactions as needed -->
+    </div>
+  </div>
+</div>

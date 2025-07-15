@@ -1,0 +1,70 @@
+<header class="header">
+    <div class="logo-container">
+<img src="assets/logo.png" class="logo" />
+      <span class="app-name">99Gift Spin</span>
+    </div>
+  
+    <div class="user-controls">
+      <div class="notification-icon">
+        <i class="fas fa-bell"></i>
+        <span class="notification-badge">3</span>
+      </div>
+      <div class="user-profile" title="User Profile">
+  <i class="fas fa-user-circle user-avatar"></i>
+</div>
+
+    </div>
+  </header>
+  
+  <aside class="sidebar" [class.collapsed]="isSidebarCollapsed">
+    <button class="toggle-sidebar" (click)="toggleSidebar()">
+      <i class="fas" [ngClass]="isSidebarCollapsed ? 'fa-chevron-right' : 'fa-chevron-left'"></i>
+    </button>
+  
+    <ul class="sidebar-menu">
+      <li class="menu-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a routerLink="/dashboard">
+          <span class="menu-icon"><i class="fas fa-home"></i></span>
+          <span class="menu-text">Dashboard</span>
+        </a>
+      </li>
+      <li class="menu-item" routerLinkActive="active">
+        <a routerLink="/users">
+          <span class="menu-icon"><i class="fas fa-users"></i></span>
+          <span class="menu-text">Users</span>
+        </a>
+      </li>
+      <li class="menu-item" routerLinkActive="active">
+        <a routerLink="/spin-config">
+          <span class="menu-icon"><i class="fas fa-coins"></i></span>
+          <span class="menu-text">Spin config</span>
+        </a>
+      </li>
+      <li class="menu-item" routerLinkActive="active">
+        <a routerLink="/prize">
+          <span class="menu-icon"><i class="fas fa-history"></i></span>
+          <span class="menu-text">prize</span>
+        </a>
+      </li>
+      <li class="menu-item" routerLinkActive="active">
+        <a routerLink="/wallet">
+          <span class="menu-icon"><i class="fas fa-wallet"></i></span>
+          <span class="menu-text">Wallet</span>
+        </a>
+      </li>
+      <li class="menu-item" routerLinkActive="active">
+        <a routerLink="/settings">
+          <span class="menu-icon"><i class="fas fa-cog"></i></span>
+          <span class="menu-text">Settings</span>
+        </a>
+      </li>
+      <li class="menu-item" routerLinkActive="active">
+        <a routerLink="/help">
+          <span class="menu-icon"><i class="fas fa-question-circle"></i></span>
+          <span class="menu-text">Help & Support</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
+  
+  

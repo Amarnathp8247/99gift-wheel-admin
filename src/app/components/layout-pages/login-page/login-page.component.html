@@ -1,0 +1,29 @@
+<div class="container-fluid d-flex justify-content-center mt-5">
+    <div class="login-container">
+      <img src="https://via.placeholder.com/120x60?text=99Gift+Logo" alt="99Gift Logo" class="logo">
+      <h1>Login to Spin the Wheel</h1>
+  
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" formControlName="email" placeholder="Enter your email" required>
+        </div>
+  
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" formControlName="password" placeholder="Enter your password" required>
+        </div>
+  
+        <div *ngIf="errorMessage" style="color: red; margin-bottom: 10px;">
+          {{ errorMessage }}
+        </div>
+  
+        <button type="submit" class="login-btn">LOGIN</button>
+      </form>
+  
+      <div class="options">
+        <a href="#">Forgot password?</a> | <a href="#">Sign up</a>
+      </div>
+    </div>
+  </div>
+  
