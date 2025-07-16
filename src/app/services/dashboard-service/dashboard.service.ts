@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { signal } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DashboardService {
-  private baseUrl = 'http://localhost:8000/api/v1/dashboard';
+  private baseUrl = environment.apiBaseUrl;
 
   stats = signal({
     totalUsers: 0,
@@ -23,7 +24,7 @@ export class DashboardService {
   constructor(private http: HttpClient) {}
 
   fetchDashboardData() {
-    return this.http.get<any>(`${this.baseUrl}/dashboard-stats`);
+    return this.http.get<any>(`${this.baseUrl}/dashboard/dashboard-stats`);
   }
 
   loadDashboardData() {

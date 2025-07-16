@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpinService {
 
-  private baseUrl = 'http://localhost:8000/api/v1/admin/spin';
+  private baseUrl = environment.apiBaseUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -15,7 +16,7 @@ export class SpinService {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     });
-    return this.http.post(`${this.baseUrl}/config`, config, { headers });
+    return this.http.post(`${this.baseUrl}/admin/spin/config`, config, { headers });
   }
 
   getPrizes(token: string) {
@@ -23,7 +24,7 @@ export class SpinService {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json'
     });
-    return this.http.get(`${this.baseUrl}/prizes`, { headers });
+    return this.http.get(`${this.baseUrl}/admin/spin/prizes`, { headers });
   }
 
   createConfig(data: any, token: string) {
@@ -31,14 +32,14 @@ export class SpinService {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     });
-    return this.http.post(`${this.baseUrl}/config`, data, { headers });
+    return this.http.post(`${this.baseUrl}/admin/spin/config`, data, { headers });
   }
   
   getConfigs(token: string) {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
-    return this.http.get(`${this.baseUrl}/config`, { headers });
+    return this.http.get(`${this.baseUrl}/admin/spin/config`, { headers });
   }
   
 }
